@@ -2,163 +2,286 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Display Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Card Swiper</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1200px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            touch-action: pan-y;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ad-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            flex-shrink: 0;
+        }
+        
+        .top-ad {
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bottom-ad {
+            position: sticky;
+            bottom: 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-viewport {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card {
+            width: 88%;
+            max-width: 380px;
+            height: 65vh;
+            min-height: 400px;
             margin: 0 auto;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .card-desc {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .ad-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            flex-direction: column;
             padding: 20px;
         }
-        .ad-container {
-            margin: 15px 0;
-            padding: 10px;
-            border: 1px dashed #ccc;
-            text-align: center;
-            background-color: #f9f9f9;
+        
+        .slide-left {
+            animation: slideLeft 0.35s ease-out forwards;
         }
-        .ad-label {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: bold;
+        
+        .slide-right {
+            animation: slideRight 0.35s ease-out forwards;
         }
-        .main-content {
-            display: flex;
-            gap: 20px;
+        
+        @keyframes slideLeft {
+            from { transform: translate(100%, -50%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
         }
-        .left-column {
-            flex: 1;
-        }
-        .right-column {
-            width: 180px;
-        }
-        .ad-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        .wide-ad {
-            width: 100%;
-        }
-        .medium-ad {
-            flex: 1;
-        }
-        h1 {
-            color: #333;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+        
+        @keyframes slideRight {
+            from { transform: translate(-150%, -50%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <h1>Advertisement Display</h1>
-    <p>This page demonstrates various ad formats from different networks.</p>
+    <!-- Top Banner Ad -->
+    <div class="ad-container top-ad">
+        <script type="text/javascript">
+            atOptions = {
+                'key': 'bb29aac44edbfca12cbb8af1ad481868',
+                'format': 'iframe',
+                'height': 50,
+                'width': 320,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/bb29aac44edbfca12cbb8af1ad481868/invoke.js"></script>
+    </div>
     
-    <div class="main-content">
-        <div class="left-column">
-            <!-- Profitableratecpm Ad -->
-            <div class="ad-container wide-ad">
-                <div class="ad-label">Profitableratecpm.com Ad</div>
-                <script async="async" data-cfasync="false" src="//pl26996060.profitableratecpm.com/1aef5a6e28f57ab267d1e2d2a9037702/invoke.js"></script>
-                <div id="container-1aef5a6e28f57ab267d1e2d2a9037702"></div>
-            </div>
-            
-            <!-- 728x90 Ad -->
-            <div class="ad-container wide-ad">
-                <div class="ad-label">Highperformanceformat.com Ad (728x90)</div>
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '7c5582812440443927bec176f7e87cd5',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/7c5582812440443927bec176f7e87cd5/invoke.js"></script>
-            </div>
-            
-            <!-- 468x60 and 320x50 Row -->
-            <div class="ad-row">
-                <div class="ad-container medium-ad">
-                    <div class="ad-label">Highperformanceformat.com Ad (468x60)</div>
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '7743f863e578007acb2421de7b2820b7',
-                            'format' : 'iframe',
-                            'height' : 60,
-                            'width' : 468,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//www.highperformanceformat.com/7743f863e578007acb2421de7b2820b7/invoke.js"></script>
-                </div>
-                
-                <div class="ad-container medium-ad">
-                    <div class="ad-label">Highperformanceformat.com Ad (320x50)</div>
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : 'f9d2794d74ae6b0f1b921dda7fa45bd8',
-                            'format' : 'iframe',
-                            'height' : 50,
-                            'width' : 320,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//www.highperformanceformat.com/f9d2794d74ae6b0f1b921dda7fa45bd8/invoke.js"></script>
-                </div>
-            </div>
-            
-            <!-- 300x250 Ad -->
-            <div class="ad-container">
-                <div class="ad-label">Highperformanceformat.com Ad (300x250)</div>
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : 'f1140522590e815cf8475cb0b8a3dfe0',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/f1140522590e815cf8475cb0b8a3dfe0/invoke.js"></script>
+    <!-- Card Viewport -->
+    <div class="card-viewport">
+        <!-- Card 1 (Image) -->
+        <div class="card active" data-index="0">
+            <img src="https://source.unsplash.com/random/600x400?nature" alt="Nature" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">Beautiful Nature</h3>
+                <p class="card-desc">Explore the wonders of the natural world</p>
             </div>
         </div>
         
-        <!-- Right Column for Skyscraper Ads -->
-        <div class="right-column">
-            <div class="ad-container">
-                <div class="ad-label">Highperformanceformat.com Ad (160x300)</div>
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : 'b8e61c8106a448a23fe959521b9a2f8a',
-                        'format' : 'iframe',
-                        'height' : 300,
-                        'width' : 160,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/b8e61c8106a448a23fe959521b9a2f8a/invoke.js"></script>
+        <!-- Card 2 (Ad) -->
+        <div class="card" data-index="1">
+            <script async="async" data-cfasync="false" src="//pl26966820.profitableratecpm.com/c8e12c285c8c3c470246347b51f6b1e8/invoke.js"></script>
+            <div id="container-c8e12c285c8c3c470246347b51f6b1e8"></div>
+        </div>
+        
+        <!-- Card 3 (Image) -->
+        <div class="card" data-index="2">
+            <img src="https://source.unsplash.com/random/600x400?city" alt="City" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">Urban Life</h3>
+                <p class="card-desc">Discover vibrant city landscapes</p>
             </div>
-            
-            <div class="ad-container">
-                <div class="ad-label">Highperformanceformat.com Ad (160x600)</div>
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '04b3a4825b918eea8bf9476729e4a6cd',
-                        'format' : 'iframe',
-                        'height' : 600,
-                        'width' : 160,
-                        'params' : {}
-                    };
-                </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/04b3a4825b918eea8bf9476729e4a6cd/invoke.js"></script>
+        </div>
+        
+        <!-- Card 4 (Ad) -->
+        <div class="card" data-index="3">
+            <div class="ad-card">
+                <h3>Sponsored Content</h3>
+                <p>Check out these amazing deals!</p>
             </div>
         </div>
     </div>
-    <script type='text/javascript' src='//pl26996112.profitableratecpm.com/80/12/24/801224dccffc6377d7aa0a8b749dfdf3.js'></script>
+    
+    <!-- Bottom Banner Ad -->
+    <div class="ad-container bottom-ad">
+        <script type="text/javascript">
+            atOptions = {
+                'key': 'bb29aac44edbfca12cbb8af1ad481868',
+                'format': 'iframe',
+                'height': 50,
+                'width': 320,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/bb29aac44edbfca12cbb8af1ad481868/invoke.js"></script>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            let currentIndex = 0;
+            let startX, moveX;
+            let isDragging = false;
+            
+            // Initialize cards
+            cards.forEach((card, index) => {
+                card.style.display = index === 0 ? 'flex' : 'none';
+            });
+            
+            // Touch events
+            const viewport = document.querySelector('.card-viewport');
+            
+            viewport.addEventListener('touchstart', handleTouchStart, { passive: false });
+            viewport.addEventListener('touchmove', handleTouchMove, { passive: false });
+            viewport.addEventListener('touchend', handleTouchEnd);
+            
+            // Mouse events
+            viewport.addEventListener('mousedown', handleMouseDown);
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseEnd);
+            
+            function handleTouchStart(e) {
+                e.preventDefault();
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }
+            
+            function handleTouchMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                moveX = e.touches[0].clientX;
+            }
+            
+            function handleTouchEnd() {
+                if (!isDragging) return;
+                handleSwipe();
+            }
+            
+            function handleMouseDown(e) {
+                startX = e.clientX;
+                isDragging = true;
+            }
+            
+            function handleMouseMove(e) {
+                if (!isDragging) return;
+                moveX = e.clientX;
+            }
+            
+            function handleMouseEnd() {
+                if (!isDragging) return;
+                handleSwipe();
+            }
+            
+            function handleSwipe() {
+                isDragging = false;
+                const diffX = startX - moveX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0 && currentIndex < cards.length - 1) {
+                        navigateTo(currentIndex + 1);
+                    } else if (diffX < 0 && currentIndex > 0) {
+                        navigateTo(currentIndex - 1);
+                    }
+                }
+            }
+            
+            function navigateTo(index) {
+                if (index < 0 || index >= cards.length) return;
+                
+                cards[currentIndex].style.display = 'none';
+                currentIndex = index;
+                cards[currentIndex].style.display = 'flex';
+                
+                // Add direction-based animation
+                const animationClass = (index > currentIndex) ? 'slide-left' : 'slide-right';
+                cards[currentIndex].classList.add(animationClass);
+                
+                setTimeout(() => {
+                    cards[currentIndex].classList.remove('slide-left', 'slide-right');
+                }, 350);
+            }
+        });
+    </script>
 </body>
 </html>
